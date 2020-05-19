@@ -1,0 +1,8 @@
+{
+  "name": "jetWorkApp",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
