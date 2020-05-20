@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "jetworkapp-1586c": {
+      "hosting": {
+        "app": [
+          "jetworkapp-1586c"
+        ]
+      }
+    }
+  }
+}

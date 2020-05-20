@@ -1,9 +1,114 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>home</ion-title>
+    <ion-title>Home</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list *ngIf="!publicacaos.length">
+    <ion-item *ngFor="let item of [0, 1, 2]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let publicacao of publicacaos">
+      <ion-item button [routerLink]="['/details', publicacao.id]">
+        <ion-avatar slot="start">
+         
+        </ion-avatar>
+
+        <ion-label>
+          {{ publicacao.titulo }}
+          <p>{{ publicacao.categoria }}</p>
+          <p>{{ publicacao.descricao }}</p>
+          <p>{{ publicacao.experiencia }}</p>
+          <p>{{ publicacao.cidade }}</p>
+          <p>{{ publicacao.estado }}</p>
+          <p>{{ publicacao.createdAt | date: 'short' }}</p>
+        </ion-label>
+
+        <ion-note color="primary" slot="end" *ngIf="publicacao.valor">{{ publicacao.valor | currency: 'BRL' }}</ion-note>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="deletePublicacao(publicacao.id)">
+          <ion-icon slot="top" name="trash"></ion-icon>
+          Excluir
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  
+  <!-- <div>
+      <ion-button full>Publicar </ion-button>
+    <div >
+      <ion-card>
+        <ion-item *ngFor="let publicacao of publicacaos">
+          <ion-avatar item-start>
+            <img src="https://api.adorable.io/avatars/100/avatar.png" alt="">
+          </ion-avatar>
+          {{ publicacao.titulo }}
+          <p>{{ publicacao.categoria }}</p>
+          <p>{{ publicacao.descricao }}</p>
+          <p>{{ publicacao.experiencia }}</p>
+          
+          <p>{{ publicacao.cidade }}</p>
+          <p>{{ publicacao.estado }}</p>
+          <p>{{ publicacao.createdAt | date: 'short' }}</p>
+        </ion-item>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button ion-start clear small>
+              <ion-icon name="repeat"></ion-icon>
+              <div>&nbsp;932 reposts</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button ion-start clear small color="danger">
+              <ion-icon name="heart"></ion-icon>
+              <div>&nbsp;12k likes</div>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+  </div> -->
+
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-button (click)="logout()" color="danger" expand="block">
+            Sair
+          </ion-button>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-button routerLink="/details" expand="block">
+            Add produto
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
