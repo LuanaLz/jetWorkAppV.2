@@ -19,8 +19,8 @@ export class HomePage implements OnInit {
   constructor(
     private loadingCtrl: LoadingController,
     private publicacaoService: PublicacaoService,
-    private authService: AuthService,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private authService: AuthService
     ) 
     
     {

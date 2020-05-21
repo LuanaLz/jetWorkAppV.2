@@ -1,6 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+    <!-- <ion-button>
+      <ion-icon name="home" small routerLink="/intro"></ion-icon>
+    </ion-button> -->
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="swiper-no-swiping">
   <div class="container top">
-    <!-- <img src="/assets/img/logo.png"> -->
+    
 
     <ion-segment (ionChange)="segmentChanged($event)" value="login">
       <ion-segment-button value="login">
@@ -10,6 +19,9 @@
         <ion-label>Cadastro</ion-label>
       </ion-segment-button>
     </ion-segment>
+      <div class="teste">
+        <img src="/assets/img/job.png">
+      </div>
   </div>
 
   <ion-content>
