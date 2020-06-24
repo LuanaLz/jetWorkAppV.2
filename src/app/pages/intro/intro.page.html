@@ -1,19 +1,17 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Jet Work</ion-title>
     <ion-buttons end>
       <ion-button small routerLink="/login">Login</ion-button>
     </ion-buttons>
-  </ion-toolbar>
-
- 
+  </ion-toolbar> 
 </ion-header>
 
 <ion-content>
   <ion-slides pager>
     <ion-slide>
       <ion-grid>
-        <img src="/assets/img/intro0.jpg">
+        <img class="intro-img" src="/assets/img/intro0.jpg">
         <ion-row>
           <h1>Seja bem vindo!</h1>
         </ion-row>
@@ -28,7 +26,7 @@
       <ion-grid>
         <img class="imagem" src="/assets/img/icon4.png">
         <ion-row>
-          <h3>Nossa mensagem é para você que busca uma renda extra</h3>
+          <h3>Você que está buscando uma renda extra</h3>
         </ion-row>
         <ion-row>
           <p>Aqui tem pessoas que estão a procura dos seus <strong>serviços</strong>. Então se você tem uma qualificação
@@ -42,7 +40,7 @@
       <ion-grid>
         <img  class="imagem" src="/assets/img/icon2.png">
         <ion-row>
-          <h3>Não conhece nenhum profissional ou não sabe a quem perguntar?</h3>
+          <h3>Não conhece nenhum profissional na area que necessita?</h3>
         </ion-row>
         <ion-row>
           <p>Estamos felizes em informar que essa pergunta nos fazemos questão de responde-la. Aqui tem <strong>profissionais</strong> qualificados e de todas as 
@@ -57,10 +55,9 @@
         <ion-row>
           <h3>Conheça o nosso espaço e faça parte dessa jornada de muito  sucesso</h3>
         </ion-row>
-        <br>
-        <ion-row>
-          <ion-button class="cadastro" small routerLink="/login">Cadastre-se</ion-button>
-        </ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button class="btn-cadastro" small routerLink="/login">Cadastre-se</ion-button>
+        </ion-col>       
       </ion-grid>
     </ion-slide>
 

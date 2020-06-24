@@ -3,7 +3,8 @@ import { PublicacaoService } from './../../services/publicacao.service';
 import { Publicacao } from './../../interfaces/publicacao';
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, ActionSheetController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,19 +14,24 @@ import { ToastController, LoadingController } from '@ionic/angular';
 export class HomePage implements OnInit {
 
   private loading: any;
-  private publicacaos = new Array<Publicacao>();
+  public publicacaos = new Array<Publicacao>();
   private publicacaosSubscription: Subscription;
+
 
   constructor(
     private loadingCtrl: LoadingController,
     private publicacaoService: PublicacaoService,
     private toastCtrl: ToastController,
-    private authService: AuthService
+    private authService: AuthService,
+    public actionSheetCtrl: ActionSheetController,
+    public router: Router
+    
     ) 
     
     {
     this.publicacaosSubscription = this.publicacaoService.getPublicacaos().subscribe(data => {
       this.publicacaos = data;
+      
     });
   }
 

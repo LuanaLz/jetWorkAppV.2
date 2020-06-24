@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>Feed</ion-title>
-    <ion-button (click)="logout()">
-      <ion-icon name="exit-outline"></ion-icon>
-    </ion-button>
-    
-
+    <ion-buttons end>
+      <ion-button icon-only (click)="logout()">
+        <ion-icon slot="start" name="exit-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -28,80 +28,84 @@
     </ion-item>
   </ion-list>
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let publicacao of publicacaos">
-      <ion-item button [routerLink]="['/details', publicacao.id]">
-        <ion-avatar slot="start">
-         
-        </ion-avatar>
+  <ion-card *ngFor="let publicacao of publicacaos">
+    <ion-item class="titulo-item">
+      <ion-avatar slot="start">
+        <img src="/assets/img/user.png">
+      </ion-avatar>
+      <ion-label>
+        <h3>{{ publicacao.userId }}</h3>
+        <p>{{ publicacao.createdAt | date: 'short' }}</p>
+      </ion-label>
+      <!-- <ion-note color="primary" slot="end" *ngIf="publicacao.valor">{{ publicacao.valor | currency: 'BRL' }}</ion-note> -->
+      <ion-button slot="end" fill="clear" [routerLink]="['/details', publicacao.id]">
+        <ion-icon slot="icon-only" name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-button slot="end" fill="clear" (click)="deletePublicacao(publicacao.id)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <!-- <img src="../../assets/hotel.jpeg" alt="ion"> -->
+    <ion-card-header>
+      <ion-row>
 
-        <ion-label>
-          {{ publicacao.titulo }}
-          <p>{{ publicacao.categoria }}</p>
-          <p>{{ publicacao.descricao }}</p>
-          <p>{{ publicacao.experiencia }}</p>
-          <p>{{ publicacao.cidade }}</p>
-          <p>{{ publicacao.estado }}</p>
-          <p>{{ publicacao.createdAt | date: 'short' }}</p>
-        </ion-label>
+        <ion-card-title class="titulo-post">{{ publicacao.titulo }}</ion-card-title>
 
-        <ion-note color="primary" slot="end" *ngIf="publicacao.valor">{{ publicacao.valor | currency: 'BRL' }}</ion-note>
-      </ion-item>
+        <ion-col>
+          <ion-note horizontal="end" color="primary" *ngIf="publicacao.valor">{{ publicacao.valor | currency: 'BRL' }}
+          </ion-note>
+        </ion-col>
 
-      <ion-item-options side="end">
-        <ion-item-option color="danger" (click)="deletePublicacao(publicacao.id)">
-          <ion-icon slot="top" name="trash"></ion-icon>
-          Excluir
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content class="dados">
+      <p> {{ publicacao.descricao }} </p>
 
-  
-  <!-- <div>
-      <ion-button full>Publicar </ion-button>
-    <div >
-      <ion-card>
-        <ion-item *ngFor="let publicacao of publicacaos">
-          <ion-avatar item-start>
-            <img src="https://api.adorable.io/avatars/100/avatar.png" alt="">
-          </ion-avatar>
-          {{ publicacao.titulo }}
-          <p>{{ publicacao.categoria }}</p>
-          <p>{{ publicacao.descricao }}</p>
-          <p>{{ publicacao.experiencia }}</p>
-          
-          <p>{{ publicacao.cidade }}</p>
-          <p>{{ publicacao.estado }}</p>
-          <p>{{ publicacao.createdAt | date: 'short' }}</p>
-        </ion-item>
+      <ion-row>
+        <ion-col center text-center>
 
-        <ion-row>
-          <ion-col>
-            <button ion-button ion-start clear small>
-              <ion-icon name="repeat"></ion-icon>
-              <div>&nbsp;932 reposts</div>
-            </button>
-          </ion-col>
-          <ion-col>
-            <button ion-button ion-start clear small color="danger">
-              <ion-icon name="heart"></ion-icon>
-              <div>&nbsp;12k likes</div>
-            </button>
-          </ion-col>
-        </ion-row>
-      </ion-card>
-    </div>
-  </div> -->
-  <!-- <ion-fab right bottom>
-    <button ion-fab color="green" routerLink="/details"><ion-icon name="add"></ion-icon></button>
-  </ion-fab> -->
+          <!-- <ion-icon name="thumbs-up"></ion-icon> -->
+          <div><strong>{{ publicacao.experiencia }}</strong></div>
 
-  <ion-fab right bottom>
-    <ion-button color="success" routerLink="/details">Add</ion-button>
-  </ion-fab>
+        </ion-col>
+        <ion-col center text-center>
 
+          <!-- <ion-icon name="text"></ion-icon> -->
+          <div><strong>{{ publicacao.cidade }}</strong></div>
 
-
+        </ion-col>
+        <ion-col center text-center>
+          <!-- <ion-icon name="time"></ion-icon> -->
+          <div><strong>{{ publicacao.estado }}</strong></div>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+    <ion-row>
+      <ion-col text-center>
+        <ion-button fill="clear">
+          <ion-icon name="thumbs-up"></ion-icon>
+          <!-- <div>1.5k Likes</div> -->
+        </ion-button>
+      </ion-col>
+      <ion-col text-center>
+        <ion-button fill="clear">
+          <ion-icon name="chatbox"></ion-icon>
+          <!-- <div>4 Comments</div> -->
+        </ion-button>
+      </ion-col>
+      <!-- <ion-col center text-center>
+          <ion-button fill="clear">
+            <ion-icon name="time"></ion-icon>
+            <div>11h ago</div>
+          </ion-button>
+        </ion-col> -->
+    </ion-row>
+  </ion-card>
 </ion-content>
-
+<ion-footer>
+  <ion-fab vertical="bottom" horizontal="end">
+    <ion-fab-button routerLink="/details">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-footer>

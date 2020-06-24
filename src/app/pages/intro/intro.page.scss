@@ -1,26 +1,38 @@
+
+ion-slide {
+    width: 100vw;
+    height: 90vh;
+}
+
 h1{
-    padding-left: 90px;
+    padding-left: 23vw;
     color: orange;
 }
 
 h3{
     color: orange;
-    padding-top: 1em;
+    padding-top: 1vh;
 }
 
-.cadastro{
-    padding-left: 8em;
+.intro-img {
+    max-width:300px;
+    max-height:250px;
+    width: auto;
+    height: auto;   
 }
 
 .imagem{
-    max-width:400px;
-    max-height:350px;
+    max-width:200px;
+    max-height:150px;
     width: auto;
-    height: auto;
-    padding-top: 90px;
+    height: auto;   
 }
 
 p{
     color:grey;
+    font-size: 14px;
 }
 
+strong {
+    color: rgb(55, 119, 221);
+}

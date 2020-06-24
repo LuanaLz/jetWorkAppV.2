@@ -7,7 +7,7 @@
     z-index: 2;
 
     &.top {
-        top: 5%;
+        top: 8%;
     }
 
     &.bottom {
@@ -19,6 +19,10 @@
     }
 }
 
+img{
+    padding-top: 2vh;
+}
+
 ion-slides {
     height: 100%;
 
@@ -27,7 +31,7 @@ ion-slides {
         color: #fff;
         background-color: #0072bc;
         border-radius: 10px;
-        margin-top: 50px;
+        margin-top: 26vh;
 
         ion-item {
             --background: rgba(255, 255, 255, 0.2);
